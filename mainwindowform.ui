@@ -13,12 +13,8 @@
   <property name="windowTitle">
    <string>Qt OSG Timer Example</string>
   </property>
-  <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="OSGWidget" name="widget" native="true"/>
-    </item>
-   </layout>
+  <widget class="osgQOpenGLWidget" name="osgWidget">
+   <layout class="QGridLayout" name="gridLayout"/>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -26,7 +22,7 @@
      <x>0</x>
      <y>0</y>
      <width>812</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -86,9 +82,9 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>OSGWidget</class>
+   <class>osgQOpenGLWidget</class>
    <extends>QWidget</extends>
-   <header>osgwidget.h</header>
+   <header location="global">osgQOpenGL/osgQOpenGLWidget</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

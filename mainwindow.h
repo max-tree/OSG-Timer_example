@@ -3,9 +3,9 @@
 
 #include <QMainWindow>
 #include <QtCore>
+#include <osgQOpenGL/osgQOpenGLWidget>
 
 class OutputWindow;
-
 
 namespace Ui {
 class MainWindowForm;
@@ -21,9 +21,18 @@ public:
 
 public slots:
     void on_actionExit_triggered();
-private:
-    Ui::MainWindowForm *mMainWindowUI;
+    void setupOsgView();
 
+protected:
+    void create_camera();
+
+private:
+    void create_scene();
+    void create_timer();
+    void create_manipulator();
+    Ui::MainWindowForm *mMainWindowUI;
+    void timerEvent(QTimerEvent *)override;
+    int mTimerId{0};
 };
 
 #endif // MAINWINDOW_H
