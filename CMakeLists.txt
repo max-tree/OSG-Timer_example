@@ -4,9 +4,10 @@ project(QtOSGTimerExample)
 FIND_PACKAGE(Qt5Widgets)
 FIND_PACKAGE(Qt5Gui)
 FIND_PACKAGE(OpenSceneGraph REQUIRED COMPONENTS osgDB osgGA osgUtil osgViewer osgText)
+FIND_LIBRARY(OSGQOPENGL_DEBUG_LIBRARIES NAMES osgQOpenGLd PATHS ${OSG_ROOT})
+FIND_LIBRARY(OSGQOPENGL_OPTIMIZED_LIBRARIES NAMES osgQOpenGL PATHS ${OSG_ROOT})
 
 INCLUDE_DIRECTORIES( ${OPENSCENEGRAPH_INCLUDE_DIRS} )
-
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED 1)
 SET(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -19,8 +20,8 @@ SET(MYSOURCE
     mainwindow.cpp
     mainwindow.h
     mainwindowform.ui
-    osgwidget.h
-    osgwidget.cpp
+    SphereUpdateCallback.h
+    SphereUpdateCallback.cpp
     )
 
 add_executable(${PROJECT_NAME}
@@ -31,4 +32,6 @@ target_link_libraries(${PROJECT_NAME}
     ${OPENSCENEGRAPH_LIBRARIES}	
     Qt5::Widgets
     Qt5::Gui
+    debug ${OSGQOPENGL_DEBUG_LIBRARIES}
+    optimized ${OSGQOPENGL_OPTIMIZED_LIBRARIES}
 )
